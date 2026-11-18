@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PQP · Intelligence Report — Mercaderismo Ultrex · Informe de Cierre · Plaza Medellín · Jul-Nov 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+    --p-navy: #0b2545; --p-deep: #13315c; --p-blue: #1d4e89; --p-sky: #2e86ab; --p-aqua: #52b6c9; --p-mint: #7ec8b1;
+    --p-fresh: #a8dadc; --p-lav: #eef4f8; --p-white: #ffffff; --p-gray: #64748b; --p-gray2: #94a3b8;
+    --p-border: #e5ebf1; --p-line: #eef2f6; --p-soft: #f4f9fc; --p-green: #0e7a5f; --p-orange: #a86a1a;
+    --p-red: #a12b2b; --p-gold: #a37b3a; --p-plum: #6b4e88;
+}
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--p-soft); color: var(--p-navy); margin: 0; padding: 0; overflow-x: hidden; letter-spacing: -0.005em; }
+
+.hero { height: 520px; background: linear-gradient(125deg, rgba(11, 37, 69, 0.90) 0%, rgba(19, 49, 92, 0.82) 50%, rgba(46, 134, 171, 0.55) 100%), url('https://images.unsplash.com/photo-1595079676339-1534801ad6cf?auto=format&fit=crop&w=2200&q=90') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; }
+.hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--p-aqua), var(--p-mint), var(--p-fresh)); }
+.hero::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: linear-gradient(180deg, transparent, var(--p-soft)); }
+.hero-topbar { position: absolute; top: 30px; left: 50px; right: 50px; display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255, 255, 255, 0.72); font-weight: 600; z-index: 3; }
+.hero-topbar .brand-mark { display: inline-flex; align-items: center; gap: 12px; }
+.hero-topbar .brand-mark .mk { width: 32px; height: 32px; border: 1.5px solid rgba(255, 255, 255, 0.85); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.85rem; }
+.hero-topbar .meta { display: flex; gap: 34px; }
+.hero-topbar .meta div span:first-child { color: rgba(255, 255, 255, 0.55); margin-right: 8px; }
+.hero-content { position: relative; z-index: 2; padding: 0 40px; max-width: 1080px; }
+.hero .brand-line { font-size: 0.75rem; letter-spacing: 8px; text-transform: uppercase; color: var(--p-fresh); font-weight: 700; margin-bottom: 22px; }
+.hero h1 { font-size: 4.6rem; font-weight: 900; margin: 0; letter-spacing: -3px; line-height: 1; text-shadow: 0 4px 30px rgba(0, 0, 0, 0.30); }
+.hero h1 .lit { font-weight: 300; color: rgba(255, 255, 255, 0.85); }
+.hero h1 .accent { background: linear-gradient(90deg, var(--p-fresh), var(--p-mint)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero .subtitle { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 5px; margin-top: 30px; font-weight: 600; color: var(--p-fresh); }
+.hero .hero-facts { display: flex; gap: 60px; justify-content: center; margin-top: 45px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.18); max-width: 720px; margin-left: auto; margin-right: auto; }
+.hero .hero-facts div .n { font-size: 1.9rem; font-weight: 800; color: white; line-height: 1; letter-spacing: -1px; }
+.hero .hero-facts div .l { font-size: 0.66rem; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255, 255, 255, 0.72); margin-top: 8px; font-weight: 600; }
+
+.container { max-width: 1360px; margin: -80px auto 0; padding: 0 20px; position: relative; z-index: 3; }
+
+.exec-summary { background: var(--p-white); padding: 55px; border-radius: 4px; box-shadow: 0 25px 55px -10px rgba(11, 37, 69, 0.14); margin-bottom: 45px; border: 1px solid var(--p-border); position: relative; overflow: hidden; }
+.exec-summary::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--p-blue), var(--p-aqua), var(--p-mint)); }
+.exec-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--p-line); padding-bottom: 24px; margin-bottom: 40px; }
+.exec-head .kicker { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--p-gray); font-weight: 700; }
+.exec-head h2 { font-size: 1.6rem; margin: 0; font-weight: 800; letter-spacing: -1px; color: var(--p-navy); }
+.exec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 36px 50px; }
+.exec-item { display: flex; gap: 20px; }
+.exec-item .ico { width: 42px; height: 42px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--p-lav); color: var(--p-blue); border-radius: 4px; font-size: 1rem; }
+.exec-item h4 { margin: 0 0 8px; color: var(--p-navy); text-transform: uppercase; font-size: 0.72rem; font-weight: 800; letter-spacing: 1.5px; }
+.exec-item p { margin: 0; font-size: 0.9rem; line-height: 1.65; color: var(--p-gray); }
+.exec-item p strong { color: var(--p-navy); font-weight: 700; }
+
+.spotlight { background: linear-gradient(125deg, var(--p-navy) 0%, var(--p-deep) 55%, var(--p-blue) 100%); color: white; border-radius: 4px; padding: 40px 44px; margin-bottom: 45px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; box-shadow: 0 20px 45px rgba(11, 37, 69, 0.25); position: relative; overflow: hidden; }
+.spotlight::after { content: ''; position: absolute; top: -120px; right: -120px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(168, 218, 220, 0.20), transparent 70%); border-radius: 50%; }
+.sp-stat { text-align: left; border-right: 1px solid rgba(255, 255, 255, 0.14); padding-right: 16px; position: relative; z-index: 1; }
+.sp-stat:last-child { border-right: none; }
+.sp-stat .sp-lbl { font-size: 0.58rem; letter-spacing: 2px; text-transform: uppercase; color: var(--p-fresh); font-weight: 700; margin-bottom: 13px; opacity: 0.9; }
+.sp-stat h2 { font-size: 2.05rem; font-weight: 800; margin: 0; color: white; letter-spacing: -1.2px; line-height: 1; }
+.sp-stat h2 small { font-size: 0.9rem; font-weight: 600; color: rgba(255, 255, 255, 0.6); margin-left: 3px; }
+.sp-stat .sp-sub { font-size: 0.7rem; color: rgba(255, 255, 255, 0.62); margin-top: 11px; line-height: 1.45; font-weight: 500; }
+
+.section-hero { display: flex; align-items: baseline; gap: 22px; margin: 65px 0 6px; }
+.section-hero .num { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--p-gray); font-weight: 800; padding: 6px 12px; border: 1px solid var(--p-border); border-radius: 2px; }
+.section-title { font-size: 2.1rem; font-weight: 800; text-align: left; color: var(--p-navy); margin: 0; letter-spacing: -1.2px; line-height: 1.1; }
+.section-title em { font-style: normal; color: var(--p-blue); font-weight: 800; }
+.section-sub { color: var(--p-gray); font-size: 0.94rem; margin: 14px 0 32px; max-width: 880px; line-height: 1.65; }
+.subsection-title { font-size: 1.2rem; font-weight: 800; color: var(--p-navy); margin: 38px 0 10px; letter-spacing: -0.4px; }
+
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 26px; }
+.kpi-card { background: var(--p-white); padding: 26px 24px; border-radius: 4px; border: 1px solid var(--p-border); transition: 0.2s; position: relative; }
+.kpi-card:hover { border-color: var(--p-blue); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(11, 37, 69, 0.08); }
+.kpi-card::before { content: ''; position: absolute; top: 0; left: 0; height: 2px; width: 40px; background: var(--p-blue); }
+.kpi-card .k-ico { width: 32px; height: 32px; margin-bottom: 18px; display: flex; align-items: center; justify-content: center; color: var(--p-blue); font-size: 1rem; }
+.kpi-card .k-lbl { font-size: 0.66rem; font-weight: 800; color: var(--p-gray); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+.kpi-card h3 { font-size: 2.3rem; margin: 0; color: var(--p-navy); font-weight: 800; letter-spacing: -1.5px; line-height: 1; }
+.kpi-card h3 small { font-size: 1rem; font-weight: 500; color: var(--p-gray); margin-left: 3px; }
+.kpi-card .k-note { font-size: 0.77rem; color: var(--p-gray); margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--p-line); line-height: 1.55; }
+.kpi-card.pos::before, .kpi-card.pos h3, .kpi-card.pos .k-ico { color: var(--p-green); }
+.kpi-card.pos::before { background: var(--p-green); }
+.kpi-card.warn::before, .kpi-card.warn h3, .kpi-card.warn .k-ico { color: var(--p-orange); }
+.kpi-card.warn::before { background: var(--p-orange); }
+.kpi-card.neg::before, .kpi-card.neg h3, .kpi-card.neg .k-ico { color: var(--p-red); }
+.kpi-card.neg::before { background: var(--p-red); }
+
+.func-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-bottom: 26px; }
+.func-block { background: var(--p-white); border: 1px solid var(--p-border); border-radius: 4px; padding: 30px; border-top: 3px solid var(--p-blue); }
+.func-block.impulso { border-top-color: var(--p-orange); }
+.func-block .func-head { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+.func-block .func-ico { width: 36px; height: 36px; border-radius: 4px; background: var(--p-lav); color: var(--p-blue); display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+.func-block.impulso .func-ico { color: var(--p-orange); background: #f7edd6; }
+.func-block h3 { margin: 0; font-size: 1.15rem; color: var(--p-navy); font-weight: 800; letter-spacing: -0.4px; }
+.func-block .func-sub { font-size: 0.62rem; letter-spacing: 2px; text-transform: uppercase; color: var(--p-gray); font-weight: 700; margin-top: 2px; }
+.func-row { display: flex; justify-content: space-between; align-items: baseline; padding: 13px 0; border-bottom: 1px solid var(--p-line); }
+.func-row:last-child { border-bottom: none; padding-bottom: 0; }
+.func-row .fr-lbl { font-size: 0.86rem; color: var(--p-gray); font-weight: 500; }
+.func-row .fr-lbl small { display: block; font-size: 0.71rem; color: var(--p-gray2); margin-top: 2px; }
+.func-row .fr-val { font-size: 1.1rem; font-weight: 800; color: var(--p-navy); font-variant-numeric: tabular-nums; }
+.func-note { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--p-line); font-size: 0.81rem; color: var(--p-gray); line-height: 1.6; }
+.func-note strong { color: var(--p-navy); }
+
+.chart-box { background: var(--p-white); padding: 34px; border-radius: 4px; border: 1px solid var(--p-border); width: 100%; margin-bottom: 26px; }
+.chart-box .cb-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+.chart-box h3 { margin: 0; font-size: 1.1rem; color: var(--p-navy); font-weight: 800; letter-spacing: -0.5px; }
+.chart-box .cb-tag { font-size: 0.62rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--p-gray); font-weight: 700; }
+.chart-box .cb-sub { font-size: 0.84rem; color: var(--p-gray); margin: 0 0 24px; line-height: 1.6; max-width: 780px; }
+.chart-container { height: 340px; width: 100%; position: relative; }
+.chart-container-sm { height: 280px; width: 100%; position: relative; }
+.chart-split { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-bottom: 26px; }
+
+.heatmap-wrap { background: var(--p-white); padding: 38px; border-radius: 4px; border: 1px solid var(--p-border); margin-bottom: 26px; }
+.heatmap-wrap .cb-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+.heatmap-wrap h3 { margin: 0; font-size: 1.1rem; color: var(--p-navy); font-weight: 800; letter-spacing: -0.5px; }
+.heatmap-wrap .cb-tag { font-size: 0.62rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--p-gray); font-weight: 700; }
+.heatmap-wrap .cb-sub { font-size: 0.84rem; color: var(--p-gray); margin: 0 0 28px; line-height: 1.6; max-width: 820px; }
+.heatmap { width: 100%; display: grid; grid-template-columns: 210px repeat(6, 1fr) 60px; gap: 4px; }
+.hm-col-header { font-size: 0.66rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--p-gray); font-weight: 800; text-align: center; padding: 8px 4px 14px; border-bottom: 1px solid var(--p-line); }
+.hm-row-header { padding: 12px 10px; font-size: 0.82rem; color: var(--p-navy); font-weight: 700; display: flex; flex-direction: column; justify-content: center; }
+.hm-row-header small { display: block; font-size: 0.68rem; color: var(--p-gray); font-weight: 500; margin-top: 3px; }
+.hm-cell { min-height: 38px; border-radius: 3px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.82rem; background: var(--p-line); color: var(--p-gray2); }
+.hm-cell.h0 { background: #f4f7fa; color: var(--p-gray2); }
+.hm-cell.h1 { background: #d9e6ee; color: var(--p-navy); }
+.hm-cell.hv { background: var(--p-green); color: white; }
+.hm-cell.hv::after { content: ''; position: absolute; top: 5px; right: 5px; width: 6px; height: 6px; background: white; border-radius: 50%; }
+.hm-cell { position: relative; }
+.hm-total { display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--p-navy); background: var(--p-soft); font-size: 1rem; border-left: 1px solid var(--p-line); }
+.hm-legend { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--p-line); font-size: 0.77rem; color: var(--p-gray); }
+.hm-legend .note-item { display: flex; align-items: center; gap: 8px; }
+.hm-legend .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--p-green); position: relative; }
+.hm-legend .dot::after { content: ''; position: absolute; top: 2px; right: 2px; width: 3px; height: 3px; background: white; border-radius: 50%; }
+
+.table-container { background: white; padding: 30px; border-radius: 4px; border: 1px solid var(--p-border); margin-bottom: 26px; }
+.table-container h3 { margin: 0 0 4px; font-size: 1.02rem; color: var(--p-navy); font-weight: 800; letter-spacing: -0.3px; }
+.table-container .tbl-sub { margin: 0 0 18px; font-size: 0.8rem; color: var(--p-gray); line-height: 1.5; }
+.table-data { width: 100%; border-collapse: collapse; }
+.table-data th { text-align: left; padding: 11px 8px 11px 0; color: var(--p-gray); border-bottom: 1px solid var(--p-navy); font-size: 0.63rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; }
+.table-data td { padding: 12px 8px 12px 0; border-bottom: 1px solid var(--p-line); font-size: 0.85rem; font-weight: 500; color: var(--p-navy); }
+.table-data tr:last-child td { border-bottom: none; }
+.table-data .num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+.pill { display: inline-block; padding: 3px 10px; font-size: 0.63rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; border-radius: 2px; border: 1px solid; }
+.pill.pos { background: #e0efe9; color: var(--p-green); border-color: #b8dbcc; }
+.pill.warn { background: #f7edd6; color: var(--p-orange); border-color: #e2c896; }
+.pill.neg { background: #f4dcdc; color: var(--p-red); border-color: #e0b1b1; }
+
+.foot { background: linear-gradient(135deg, var(--p-navy), var(--p-deep) 60%, var(--p-blue)); color: white; padding: 80px 0 40px; margin-top: 65px; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; }
+.foot-in { max-width: 1300px; margin: 0 auto; padding: 0 40px; }
+.foot-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 60px; padding-bottom: 50px; border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
+.foot-brand { font-size: 2.9rem; font-weight: 900; letter-spacing: -1.5px; line-height: 1; margin: 0 0 14px; }
+.foot-brand .accent { background: linear-gradient(90deg, var(--p-fresh), var(--p-mint)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.foot-brand-sub { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255, 255, 255, 0.55); font-weight: 600; }
+.foot-col h6 { font-size: 0.66rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--p-fresh); font-weight: 800; margin: 0 0 16px; }
+.foot-col p { font-size: 0.86rem; line-height: 1.65; color: rgba(255, 255, 255, 0.72); margin: 0 0 8px; }
+.foot-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; font-size: 0.67rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255, 255, 255, 0.42); font-weight: 600; }
+
+@media (max-width: 1024px) {
+    .exec-grid, .chart-split, .func-wrap { grid-template-columns: 1fr; }
+    .table-wrapper, .foot-top { grid-template-columns: 1fr; }
+    .spotlight { grid-template-columns: 1fr 1fr 1fr; }
+    .sp-stat { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.14); padding-bottom: 20px; }
+    .kpi-row { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 2.8rem; }
+    .heatmap { grid-template-columns: 130px repeat(6, 1fr) 46px; }
+    .hero-topbar { display: none; }
+}
+
+.city-row{grid-column:1/-1;font-size:.64rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:800;color:var(--p-blue);padding:14px 4px 6px;border-bottom:1px solid var(--p-line);margin-top:6px}
+.city-row.b{color:var(--p-plum)}
+.chip{display:inline-block;font-size:.58rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;padding:2px 8px;border-radius:2px;margin-left:8px;vertical-align:middle;background:var(--p-lav);color:var(--p-blue)}
+.chip.b{background:#efe8f5;color:var(--p-plum)}
+.callout{background:#eef7f4;border:1px solid #cfe6dd;border-left:4px solid var(--p-green);border-radius:4px;padding:22px 26px;margin-bottom:26px;font-size:.88rem;line-height:1.7;color:var(--p-gray)}
+.callout strong{color:var(--p-navy)}
+.callout h4{margin:0 0 8px;font-size:.72rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--p-green);font-weight:800}
+.table-data .ctr{text-align:center}
+@media (max-width:1024px){.hero .hero-facts{flex-wrap:wrap;gap:28px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-topbar">
+        <div class="brand-mark"><div class="mk">P</div><span>PQP · Intelligence</span></div>
+        <div class="meta">
+            <div><span>Tipo</span><b>Cierre de plaza</b></div>
+            <div><span>Plaza</span><b>Medellín</b></div>
+            <div><span>Periodo</span><b>1 jul – 14 nov</b></div>
+            <div><span>Semanas</span><b>S27 – S46</b></div>
+        </div>
+    </div>
+    <div class="hero-content">
+        <div class="brand-line">Portafolio Ultrex · Canal Tradicional · Plaza Medellín</div>
+        <h1><span class="lit">Informe de</span> <span class="accent">Cierre</span></h1>
+        <p class="subtitle">Intelligence Report · Mercaderismo Ultrex · Plaza Medellín · 1 de julio al 14 de noviembre de 2026</p>
+        <div class="hero-facts">
+            <div><div class="n">362</div><div class="l">Visitas validadas</div></div>
+            <div><div class="n">18</div><div class="l">Puntos de venta</div></div>
+            <div><div class="n">19</div><div class="l">Semanas de gestión</div></div>
+            <div><div class="n">92.8%</div><div class="l">Ruta cumplida</div></div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <section class="exec-summary">
+        <div class="exec-head">
+            <span class="kicker">Cierre de la plaza Medellín · julio a noviembre 2026 · gestoras Natalia Rueda y Aninay Pacheco · corte sábado 14 de noviembre</span>
+            <h2>Los cinco puntos del cierre</h2>
+        </div>
+        <div class="exec-grid">
+            <div class="exec-item">
+                <div class="ico"><i class="fa-regular fa-map"></i></div>
+                <div>
+                    <h4>01 · Cobertura sostenida durante cuatro meses</h4>
+                    <p><strong>362 visitas validadas en 18 puntos de venta</strong> a lo largo de 19 semanas de gestión, con un promedio de 19 visitas por semana. La ruta regular quedó consolidada en 15 PDVs de Medellín, Bello y Niquía, con 169 visitas de Natalia Rueda (julio–agosto) y 193 de Aninay Pacheco (septiembre–noviembre).</p>
+                </div>
+            </div>
+            <div class="exec-item">
+                <div class="ico"><i class="fa-solid fa-route"></i></div>
+                <div>
+                    <h4>02 · Ruta cumplida al 92.8%</h4>
+                    <p><strong>347 de 374 visitas programadas</strong> se hicieron en su día contra el Rutero PQP Mercadeo (92.6% en la primera etapa y 93% en la segunda). Contra la hoja “Rutas Inteligentes” de la Parametrización el resultado es 86.9%; las diferencias entre ambos archivos se detallan en la sección 06.</p>
+                </div>
+            </div>
+            <div class="exec-item">
+                <div class="ico"><i class="fa-solid fa-cash-register"></i></div>
+                <div>
+                    <h4>03 · Impulso de sábado: 33 de 35 visitas con venta</h4>
+                    <p>En 17 sábados la conversión fue de <strong>94.3%</strong>: 247 unidades por $5.102.602. En total, la plaza registró <strong>49 ventas, 274 unidades y $5.560.122</strong>, con el Evacuador activado en 16 visitas de sábado.</p>
+                </div>
+            </div>
+            <div class="exec-item">
+                <div class="ico"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                <div>
+                    <h4>04 · Pipeline sugerido vigente de $13.46 M</h4>
+                    <p>Los 14 PDVs activos al cierre dejan un <strong>pedido sugerido vigente de $13.46 M</strong> (último sugerido de cada punto). En el periodo se levantaron 262 propuestas de pedido por un acumulado registrado de $284.90 M.</p>
+                </div>
+            </div>
+            <div class="exec-item">
+                <div class="ico"><i class="fa-solid fa-tag"></i></div>
+                <div>
+                    <h4>05 · Ejecución completa en punto de venta</h4>
+                    <p>Inventario en el 97.0% de las visitas y chequeo de precios en el 84.5%; <strong>231 de 319 chequeos con referencia (72.4%) dentro de rango</strong>. DERSA fue la marca de competencia más vista (188 de 394 registros), y al cierre hay material POP en 14 de los 14 PDVs activos y 707 muestras entregadas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="spotlight">
+        <div class="sp-stat"><div class="sp-lbl">Visitas validadas</div><h2>362</h2><div class="sp-sub">18 PDVs · 19 semanas de gestión</div></div>
+        <div class="sp-stat"><div class="sp-lbl">Ruta cumplida</div><h2>92.8<small>%</small></h2><div class="sp-sub">347 de 374 visitas programadas</div></div>
+        <div class="sp-stat"><div class="sp-lbl">Conversión de sábado</div><h2>94.3<small>%</small></h2><div class="sp-sub">33 de 35 visitas de sábado con venta</div></div>
+        <div class="sp-stat"><div class="sp-lbl">Unidades vendidas</div><h2>274 <small>uds.</small></h2><div class="sp-sub">$5.560.122 en 49 ventas</div></div>
+        <div class="sp-stat"><div class="sp-lbl">Pipeline sugerido vigente</div><h2>$13.5<small>M</small></h2><div class="sp-sub">Último sugerido de 14 PDVs activos</div></div>
+        <div class="sp-stat"><div class="sp-lbl">Precios dentro de rango</div><h2>72.4<small>%</small></h2><div class="sp-sub">231 de 319 chequeos con referencia</div></div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section-hero"><div class="num">01</div><h2 class="section-title">Cobertura <em>de la plaza</em></h2></div>
+    <p class="section-sub">La gestión arrancó el 1 de julio con Natalia Rueda y continuó hasta el 31 de agosto. Entre el 1 y el 15 de septiembre la plaza estuvo en relevo y capacitación de la nueva gestora, Aninay Pacheco, que retomó la ruta el 16 de septiembre y la ejecutó hasta el cierre.</p>
+
+    <div class="kpi-row">
+        <div class="kpi-card"><div class="k-ico"><i class="fa-regular fa-calendar-days"></i></div><div class="k-lbl">Visitas validadas</div><h3>362</h3><div class="k-note">169 de la primera etapa y 193 de la segunda.</div></div>
+        <div class="kpi-card"><div class="k-ico"><i class="fa-regular fa-map"></i></div><div class="k-lbl">Puntos de venta</div><h3>18</h3><div class="k-note">15 de ruta regular, y 3 PDVs de visita puntual (Boom La América, Boom La 33 y Maxiofertas Copacabana).</div></div>
+        <div class="kpi-card"><div class="k-ico"><i class="fa-solid fa-briefcase"></i></div><div class="k-lbl">Visitas por semana</div><h3>19.1</h3><div class="k-note">Promedio sobre 19 semanas; 25 fue la semana más alta.</div></div>
+        <div class="kpi-card pos"><div class="k-ico"><i class="fa-solid fa-location-crosshairs"></i></div><div class="k-lbl">Visitas ubicadas por GPS</div><h3>96.7<small>%</small></h3><div class="k-note">350 de 362 visitas en la coordenada habitual de su PDV.</div></div>
+    </div>
+
+    <div class="chart-box">
+        <div class="cb-head"><h3>Visitas por semana y gestora</h3><div class="cb-tag">Fig. 01</div></div>
+        <p class="cb-sub">19 semanas con gestión entre S27 (1 jul) y S46 (14 nov); la S37 corresponde al relevo de gestora.</p>
+        <div class="chart-container"><canvas id="chVis"></canvas></div>
+    </div>
+
+    <div class="table-container">
+        <h3>Resultado por punto de venta</h3>
+        <p class="tbl-sub">Visitas, ventas y último pedido sugerido de cada PDV de la plaza.</p>
+        <table class="table-data">
+            <tr><th>PDV</th><th class="num">Visitas</th><th>Periodo</th><th class="num">Ventas</th><th class="num">Unidades</th><th class="num">Último sugerido</th><th>Estado</th></tr>
+            <tr><td>La 80 Cabañas</td><td class='num'>59</td><td>1 jul – 14 nov</td><td class='num'>17</td><td class='num'>92</td><td class='num'>$453.600</td><td>Activo al cierre</td></tr><tr><td>Mercados Y Carnes O.R</td><td class='num'>51</td><td>1 jul – 13 nov</td><td class='num'>12</td><td class='num'>138</td><td class='num'>$551.760</td><td>Activo al cierre</td></tr><tr><td>Maxiofertas Niquia</td><td class='num'>40</td><td>3 jul – 13 nov</td><td class='num'>4</td><td class='num'>5</td><td class='num'>$853.200</td><td>Activo al cierre</td></tr><tr><td>Comercializadora La 2000</td><td class='num'>29</td><td>1 jul – 13 nov</td><td class='num'>2</td><td class='num'>4</td><td class='num'>$1.361.000</td><td>Activo al cierre</td></tr><tr><td>La Chinca Bello</td><td class='num'>24</td><td>6 jul – 11 nov</td><td class='num'>3</td><td class='num'>5</td><td class='num'>$916.880</td><td>Activo al cierre</td></tr><tr><td>La Chinga Niquia</td><td class='num'>20</td><td>8 jul – 14 nov</td><td class='num'>5</td><td class='num'>18</td><td class='num'>$751.740</td><td>Activo al cierre</td></tr><tr><td>Dinastía Plaza De Flores</td><td class='num'>19</td><td>9 jul – 12 nov</td><td class='num'>1</td><td class='num'>1</td><td class='num'>$2.058.960</td><td>Activo al cierre</td></tr><tr><td>La Bendición</td><td class='num'>16</td><td>2 jul – 12 nov</td><td class='num'>0</td><td class='num'>0</td><td class='num'>$801.600</td><td>Activo al cierre</td></tr><tr><td>Tropiexpress</td><td class='num'>16</td><td>2 jul – 12 nov</td><td class='num'>0</td><td class='num'>0</td><td class='num'>$84.000</td><td>Activo al cierre</td></tr><tr><td>Dinastía San Javier</td><td class='num'>16</td><td>2 jul – 12 nov</td><td class='num'>1</td><td class='num'>2</td><td class='num'>$1.002.840</td><td>Activo al cierre</td></tr><tr><td>Mercados La Raza</td><td class='num'>15</td><td>7 jul – 10 nov</td><td class='num'>0</td><td class='num'>0</td><td class='num'>$459.800</td><td>Activo al cierre</td></tr><tr><td>Merca Alex</td><td class='num'>15</td><td>7 jul – 10 nov</td><td class='num'>1</td><td class='num'>3</td><td class='num'>$507.800</td><td>Activo al cierre</td></tr><tr><td>Dinastía Castilla</td><td class='num'>14</td><td>7 jul – 10 nov</td><td class='num'>0</td><td class='num'>0</td><td class='num'>$1.045.280</td><td>Activo al cierre</td></tr><tr><td>Supermercado Mundo Oferta</td><td class='num'>13</td><td>31 jul – 10 nov</td><td class='num'>2</td><td class='num'>2</td><td class='num'>$2.614.560</td><td>Activo al cierre</td></tr><tr><td>Supermercado La 2000 Niquia</td><td class='num'>12</td><td>15 jul – 23 oct</td><td class='num'>0</td><td class='num'>0</td><td class='num'>$1.486.000</td><td>Sin visitas al cierre</td></tr><tr><td>Boom La 33</td><td class='num'>1</td><td>2 jul – 2 jul</td><td class='num'>0</td><td class='num'>0</td><td class='num'>—</td><td>Sin visitas al cierre</td></tr><tr><td>Boom La América</td><td class='num'>1</td><td>2 jul – 2 jul</td><td class='num'>0</td><td class='num'>0</td><td class='num'>—</td><td>Sin visitas al cierre</td></tr><tr><td>Maxiofertas Copacabana</td><td class='num'>1</td><td>1 ago – 1 ago</td><td class='num'>1</td><td class='num'>4</td><td class='num'>—</td><td>Sin visitas al cierre</td></tr>
+        </table>
+    </div>
+
+    <!-- 02 -->
+    <div class="section-hero"><div class="num">02</div><h2 class="section-title">Cumplimiento <em>de ruta</em></h2></div>
+    <p class="section-sub">Cada visita se comparó con el cronograma de Medellín del “Rutero PQP Mercadeo” (actualizado el 9 de noviembre) y se contrastó con la hoja “Rutas Inteligentes” de la Parametrización. La capacitación del 14 y 15 de septiembre no se cuenta como ruta.</p>
+
+    <div class="kpi-row">
+        <div class="kpi-card pos"><div class="k-ico"><i class="fa-solid fa-route"></i></div><div class="k-lbl">Cumplimiento total</div><h3>92.8<small>%</small></h3><div class="k-note">347 de 374 visitas programadas, hechas en su día.</div></div>
+        <div class="kpi-card pos"><div class="k-ico"><i class="fa-solid fa-user"></i></div><div class="k-lbl">Natalia Rueda · jul-ago</div><h3>92.6<small>%</small></h3><div class="k-note">162 de 175 visitas programadas.</div></div>
+        <div class="kpi-card pos"><div class="k-ico"><i class="fa-solid fa-user"></i></div><div class="k-lbl">Aninay Pacheco · sep-nov</div><h3>93<small>%</small></h3><div class="k-note">185 de 199 visitas programadas.</div></div>
+        <div class="kpi-card"><div class="k-ico"><i class="fa-solid fa-file-lines"></i></div><div class="k-lbl">Contra Rutas Inteligentes</div><h3>86.9<small>%</small></h3><div class="k-note">337 de 388; el plan de esa hoja difiere en 13 días.</div></div>
+    </div>
+
+    <div class="chart-split">
+        <div class="chart-box"><div class="cb-head"><h3>% de cumplimiento por semana</h3><div class="cb-tag">Fig. 02</div></div><p class="cb-sub">Visitas hechas en su día sobre las programadas.</p><div class="chart-container-sm"><canvas id="chRuta"></canvas></div></div>
+        <div class="table-container"><h3>Cumplimiento por mes</h3><p class="tbl-sub">Visitas realizadas frente al plan de cada mes.</p>
+            <table class="table-data"><tr><th>Mes</th><th class="num">Visitas</th><th class="num">Plan</th><th class="num">Hechas</th><th class="num">%</th></tr><tr><td>Julio</td><td class='num'>95</td><td class='num'>98</td><td class='num'>89</td><td class='num'>90.8%</td></tr><tr><td>Agosto</td><td class='num'>74</td><td class='num'>77</td><td class='num'>73</td><td class='num'>94.8%</td></tr><tr><td>Septiembre</td><td class='num'>53</td><td class='num'>53</td><td class='num'>50</td><td class='num'>94.3%</td></tr><tr><td>Octubre</td><td class='num'>100</td><td class='num'>103</td><td class='num'>98</td><td class='num'>95.1%</td></tr><tr><td>Noviembre</td><td class='num'>40</td><td class='num'>43</td><td class='num'>37</td><td class='num'>86%</td></tr><tr style='font-weight:800'><td>Total plaza</td><td class='num'>362</td><td class='num'>374</td><td class='num'>347</td><td class='num'>92.8%</td></tr></table></div>
+    </div>
+
+    <div class="table-container">
+        <h3>Resumen semanal de la plaza</h3>
+        <p class="tbl-sub">La semana S35 (24–31 ago) corresponde al cierre de la primera etapa: el cronograma del rutero programa 7 visitas hasta el 26 de agosto, mientras la hoja “Rutas Inteligentes” mantiene 21.</p>
+        <table class="table-data">
+            <tr><th>Semana</th><th>Gestora</th><th class="num">Visitas</th><th class="num">PDVs</th><th class="num">Ruta</th><th class="num">%</th><th class="num">Ventas</th><th class="num">Unidades</th><th class="num">Sugerido</th></tr>
+            <tr><td>S27 · 1 jul–4 jul</td><td>Natalia Rueda</td><td class='num'>14</td><td class='num'>9</td><td class='num'>13 de 14</td><td class='num'>92.9%</td><td class='num'>3</td><td class='num'>58</td><td class='num'>$10.82 M</td></tr><tr><td>S28 · 6 jul–11 jul</td><td>Natalia Rueda</td><td class='num'>24</td><td class='num'>13</td><td class='num'>21 de 25</td><td class='num'>84%</td><td class='num'>8</td><td class='num'>19</td><td class='num'>$23.79 M</td></tr><tr><td>S29 · 14 jul–18 jul</td><td>Natalia Rueda</td><td class='num'>20</td><td class='num'>14</td><td class='num'>18 de 20</td><td class='num'>90%</td><td class='num'>3</td><td class='num'>17</td><td class='num'>$17.15 M</td></tr><tr><td>S30 · 21 jul–25 jul</td><td>Natalia Rueda</td><td class='num'>18</td><td class='num'>13</td><td class='num'>18 de 20</td><td class='num'>90%</td><td class='num'>6</td><td class='num'>21</td><td class='num'>$14.37 M</td></tr><tr><td>S31 · 27 jul–1 ago</td><td>Natalia Rueda</td><td class='num'>21</td><td class='num'>13</td><td class='num'>21 de 21</td><td class='num'>100%</td><td class='num'>4</td><td class='num'>9</td><td class='num'>$19.44 M</td></tr><tr><td>S32 · 3 ago–8 ago</td><td>Natalia Rueda</td><td class='num'>17</td><td class='num'>13</td><td class='num'>17 de 18</td><td class='num'>94.4%</td><td class='num'>2</td><td class='num'>28</td><td class='num'>$12.93 M</td></tr><tr><td>S33 · 10 ago–15 ago</td><td>Natalia Rueda</td><td class='num'>24</td><td class='num'>15</td><td class='num'>24 de 25</td><td class='num'>96%</td><td class='num'>2</td><td class='num'>9</td><td class='num'>$31.01 M</td></tr><tr><td>S34 · 18 ago–22 ago</td><td>Natalia Rueda</td><td class='num'>19</td><td class='num'>14</td><td class='num'>18 de 20</td><td class='num'>90%</td><td class='num'>3</td><td class='num'>12</td><td class='num'>$10.35 M</td></tr><tr><td>S35 · 24 ago–26 ago</td><td>Natalia Rueda</td><td class='num'>7</td><td class='num'>5</td><td class='num'>7 de 7</td><td class='num'>100%</td><td class='num'>1</td><td class='num'>0</td><td class='num'>$3.94 M</td></tr><tr><td>S36 · 31 ago–31 ago</td><td>Natalia Rueda</td><td class='num'>5</td><td class='num'>5</td><td class='num'>5 de 5</td><td class='num'>100%</td><td class='num'>0</td><td class='num'>0</td><td class='num'>$1.85 M</td></tr><tr><td>S38 · 16 sep–19 sep</td><td>Aninay Pacheco</td><td class='num'>16</td><td class='num'>10</td><td class='num'>15 de 16</td><td class='num'>93.8%</td><td class='num'>2</td><td class='num'>22</td><td class='num'>—</td></tr><tr><td>S39 · 21 sep–26 sep</td><td>Aninay Pacheco</td><td class='num'>23</td><td class='num'>15</td><td class='num'>21 de 23</td><td class='num'>91.3%</td><td class='num'>2</td><td class='num'>13</td><td class='num'>$16.06 M</td></tr><tr><td>S40 · 28 sep–3 oct</td><td>Aninay Pacheco</td><td class='num'>25</td><td class='num'>15</td><td class='num'>25 de 25</td><td class='num'>100%</td><td class='num'>2</td><td class='num'>10</td><td class='num'>$27.89 M</td></tr><tr><td>S41 · 5 oct–10 oct</td><td>Aninay Pacheco</td><td class='num'>22</td><td class='num'>14</td><td class='num'>21 de 22</td><td class='num'>95.5%</td><td class='num'>1</td><td class='num'>4</td><td class='num'>$14.70 M</td></tr><tr><td>S42 · 13 oct–17 oct</td><td>Aninay Pacheco</td><td class='num'>19</td><td class='num'>15</td><td class='num'>19 de 20</td><td class='num'>95%</td><td class='num'>2</td><td class='num'>9</td><td class='num'>$11.81 M</td></tr><tr><td>S43 · 19 oct–24 oct</td><td>Aninay Pacheco</td><td class='num'>24</td><td class='num'>15</td><td class='num'>23 de 25</td><td class='num'>92%</td><td class='num'>2</td><td class='num'>4</td><td class='num'>$19.80 M</td></tr><tr><td>S44 · 26 oct–31 oct</td><td>Aninay Pacheco</td><td class='num'>24</td><td class='num'>14</td><td class='num'>24 de 25</td><td class='num'>96%</td><td class='num'>2</td><td class='num'>11</td><td class='num'>$13.99 M</td></tr><tr><td>S45 · 3 nov–7 nov</td><td>Aninay Pacheco</td><td class='num'>20</td><td class='num'>14</td><td class='num'>18 de 18</td><td class='num'>100%</td><td class='num'>2</td><td class='num'>20</td><td class='num'>$16.90 M</td></tr><tr><td>S46 · 10 nov–14 nov</td><td>Aninay Pacheco</td><td class='num'>20</td><td class='num'>14</td><td class='num'>19 de 25</td><td class='num'>76%</td><td class='num'>2</td><td class='num'>8</td><td class='num'>$18.11 M</td></tr>
+        </table>
+    </div>
+
+    <!-- 03 -->
+    <div class="section-hero"><div class="num">03</div><h2 class="section-title">Impulso <em>y ventas</em></h2></div>
+    <p class="section-sub">Las ventas al consumidor final se concentraron en los sábados en La 80 Cabañas y Mercados Y Carnes O.R, con ventas puntuales entre semana durante la primera etapa. Donde el registro no traía precio, el valor se estimó con la lista de precios de la Parametrización ($2.237.142 de los $5.560.122).</p>
+
+    <div class="kpi-row">
+        <div class="kpi-card pos"><div class="k-ico"><i class="fa-solid fa-cash-register"></i></div><div class="k-lbl">Conversión de sábado</div><h3>94.3<small>%</small></h3><div class="k-note">33 de 35 visitas en 17 sábados.</div></div>
+        <div class="kpi-card"><div class="k-ico"><i class="fa-solid fa-boxes-stacked"></i></div><div class="k-lbl">Unidades vendidas</div><h3>274</h3><div class="k-note">247 en sábados y 27 entre semana.</div></div>
+        <div class="kpi-card"><div class="k-ico"><i class="fa-solid fa-dollar-sign"></i></div><div class="k-lbl">Valor vendido</div><h3>$5.56 M</h3><div class="k-note">49 visitas con venta; $5.102.602 en sábados.</div></div>
+        <div class="kpi-card"><div class="k-ico"><i class="fa-solid fa-truck"></i></div><div class="k-lbl">Evacuador activado</div><h3>16</h3><div class="k-note">Visitas de sábado con Evacuador (desde el 25 de julio).</div></div>
+    </div>
+
+    <div class="chart-box">
+        <div class="cb-head"><h3>Ventas de sábado: unidades y valor</h3><div class="cb-tag">Fig. 03</div></div>
+        <p class="cb-sub">17 sábados de gestión. El 4 de julio incluye una venta de 46 unidades en Mercados Y Carnes O.R.</p>
+        <div class="chart-container"><canvas id="chSab"></canvas></div>
+    </div>
+
+    <div class="chart-split">
+        <div class="table-container"><h3>Venta por categoría</h3><p class="tbl-sub">Unidades vendidas en el periodo.</p><table class="table-data"><tr><th>Categoría</th><th class="num">Unidades</th><th class="num">%</th></tr><tr><td>Detergente en polvo</td><td class='num'>194</td><td class='num'>70.8%</td></tr><tr><td>Detergente líquido</td><td class='num'>55</td><td class='num'>20.1%</td></tr><tr><td>Suavizantes</td><td class='num'>16</td><td class='num'>5.8%</td></tr><tr><td>Lavalozas</td><td class='num'>4</td><td class='num'>1.5%</td></tr></table></div>
+        <div class="table-container"><h3>Productos más vendidos</h3><p class="tbl-sub">Unidades por referencia.</p><table class="table-data"><tr><th>SKU</th><th class="num">Unidades</th></tr><tr><td>Det Ultrex Flo Fibrapro 3000 g</td><td class='num'>114</td></tr><tr><td>Det Ultrex Flo Fib Extr 3000 g</td><td class='num'>24</td></tr><tr><td>Det Liq Ultrex Flo Fibr DP 2 L</td><td class='num'>24</td></tr><tr><td>Det Liq Ultrex Flo Fibr 4 L</td><td class='num'>23</td></tr><tr><td>Det Ultrex Flo Fibrapro 500 g</td><td class='num'>15</td></tr></table></div>
+    </div>
+
+    <div class="table-container">
+        <h3>Detalle de los sábados</h3>
+        <p class="tbl-sub">Visitas de sábado, cierres de venta, unidades, valor y Evacuador.</p>
+        <table class="table-data">
+            <tr><th>Sábado</th><th class="num">Visitas</th><th class="num">Con venta</th><th class="num">Unidades</th><th class="num">Valor</th><th class="ctr">Evacuador</th></tr>
+            <tr><td>4 jul</td><td class='num'>2</td><td class='num'>2</td><td class='num'>53</td><td class='num'>$1.307.130</td><td class='ctr'>—</td></tr><tr><td>11 jul</td><td class='num'>2</td><td class='num'>2</td><td class='num'>7</td><td class='num'>$171.432</td><td class='ctr'>—</td></tr><tr><td>18 jul</td><td class='num'>3</td><td class='num'>2</td><td class='num'>16</td><td class='num'>$342.190</td><td class='ctr'>—</td></tr><tr><td>25 jul</td><td class='num'>2</td><td class='num'>2</td><td class='num'>14</td><td class='num'>$315.450</td><td class='ctr'>2</td></tr><tr><td>1 ago</td><td class='num'>2</td><td class='num'>2</td><td class='num'>7</td><td class='num'>$145.680</td><td class='ctr'>1</td></tr><tr><td>8 ago</td><td class='num'>2</td><td class='num'>2</td><td class='num'>28</td><td class='num'>$513.250</td><td class='ctr'>1</td></tr><tr><td>15 ago</td><td class='num'>2</td><td class='num'>2</td><td class='num'>9</td><td class='num'>$134.530</td><td class='ctr'>2</td></tr><tr><td>22 ago</td><td class='num'>2</td><td class='num'>2</td><td class='num'>12</td><td class='num'>$261.820</td><td class='ctr'>2</td></tr><tr><td>19 sep</td><td class='num'>2</td><td class='num'>2</td><td class='num'>22</td><td class='num'>$398.080</td><td class='ctr'>—</td></tr><tr><td>26 sep</td><td class='num'>2</td><td class='num'>2</td><td class='num'>13</td><td class='num'>$249.780</td><td class='ctr'>—</td></tr><tr><td>3 oct</td><td class='num'>2</td><td class='num'>2</td><td class='num'>10</td><td class='num'>$242.190</td><td class='ctr'>1</td></tr><tr><td>10 oct</td><td class='num'>2</td><td class='num'>1</td><td class='num'>4</td><td class='num'>$75.090</td><td class='ctr'>1</td></tr><tr><td>17 oct</td><td class='num'>2</td><td class='num'>2</td><td class='num'>9</td><td class='num'>$226.620</td><td class='ctr'>2</td></tr><tr><td>24 oct</td><td class='num'>2</td><td class='num'>2</td><td class='num'>4</td><td class='num'>$60.180</td><td class='ctr'>—</td></tr><tr><td>31 oct</td><td class='num'>2</td><td class='num'>2</td><td class='num'>11</td><td class='num'>$234.600</td><td class='ctr'>2</td></tr><tr><td>7 nov</td><td class='num'>2</td><td class='num'>2</td><td class='num'>20</td><td class='num'>$321.640</td><td class='ctr'>1</td></tr><tr><td>14 nov</td><td class='num'>2</td><td class='num'>2</td><td class='num'>8</td><td class='num'>$102.940</td><td class='ctr'>1</td></tr><tr style='font-weight:800'><td>Total (17 sábados)</td><td class='num'>35</td><td class='num'>33</td><td class='num'>247</td><td class='num'>$5.102.602</td><td class='ctr'>16</td></tr>
+        </table>
+    </div>
+
+    <!-- 04 -->
+    <div class="section-hero"><div class="num">04</div><h2 class="section-title">Sell-in <em>y pedido sugerido</em></h2></div>
+    <p class="section-sub">En cada visita se levantó una propuesta de pedido a partir del inventario del punto. El acumulado registrado suma todas las propuestas; el pedido vigente toma el último sugerido de cada PDV activo para no contar dos veces el mismo pedido.</p>
+
+    <div class="kpi-row">
+        <div class="kpi-card pos"><div class="k-ico"><i class="fa-solid fa-truck-ramp-box"></i></div><div class="k-lbl">Pedido sugerido vigente</div><h3>$13.46 M</h3><div class="k-note">Último sugerido de 14 PDVs activos.</div></div>
+        <div class="kpi-card"><div class="k-ico"><i class="fa-solid fa-file-invoice"></i></div><div class="k-lbl">Propuestas levantadas</div><h3>262</h3><div class="k-note">En 72.4% de las visitas.</div></div>
+        <div class="kpi-card"><div class="k-ico"><i class="fa-solid fa-coins"></i></div><div class="k-lbl">Acumulado registrado</div><h3>$284.90 M</h3><div class="k-note">Suma de todas las propuestas del periodo.</div></div>
+        <div class="kpi-card"><div class="k-ico"><i class="fa-solid fa-chart-column"></i></div><div class="k-lbl">Promedio por propuesta</div><h3>$1.09 M</h3><div class="k-note">Valor medio de cada pedido sugerido.</div></div>
+    </div>
+
+    <div class="chart-box">
+        <div class="cb-head"><h3>Pipeline sugerido por semana</h3><div class="cb-tag">Fig. 04</div></div>
+        <p class="cb-sub">Suma de las propuestas levantadas cada semana. S38 corresponde a la primera semana de la segunda etapa, con el módulo de pedido aún en ajuste.</p>
+        <div class="chart-container-sm" style="height:300px;"><canvas id="chSug"></canvas></div>
+    </div>
+
+    <div class="table-container">
+        <h3>Pedido sugerido vigente por PDV</h3>
+        <p class="tbl-sub">Último pedido sugerido de cada punto activo al cierre, listo para gestión comercial.</p>
+        <table class="table-data">
+            <tr><th>PDV</th><th>Fecha del sugerido</th><th class="num">Valor</th><th class="ctr">POP presente</th></tr>
+            <tr><td>Supermercado Mundo Oferta</td><td>10 nov</td><td class='num'>$2.614.560</td><td class='ctr'><span class="pill pos">Sí</span></td></tr><tr><td>Dinastía Plaza De Flores</td><td>12 nov</td><td class='num'>$2.058.960</td><td class='ctr'><span class="pill pos">Sí</span></td></tr><tr><td>Comercializadora La 2000</td><td>13 nov</td><td class='num'>$1.361.000</td><td class='ctr'><span class="pill pos">Sí</span></td></tr><tr><td>Dinastía Castilla</td><td>10 nov</td><td class='num'>$1.045.280</td><td class='ctr'><span class="pill pos">Sí</span></td></tr><tr><td>Dinastía San Javier</td><td>12 nov</td><td class='num'>$1.002.840</td><td class='ctr'><span class="pill pos">Sí</span></td></tr><tr><td>La Chinca Bello</td><td>11 nov</td><td class='num'>$916.880</td><td class='ctr'><span class="pill pos">Sí</span></td></tr><tr><td>Maxiofertas Niquia</td><td>13 nov</td><td class='num'>$853.200</td><td class='ctr'><span class="pill pos">Sí</span></td></tr><tr><td>La Bendición</td><td>12 nov</td><td class='num'>$801.600</td><td class='ctr'><span class="pill pos">Sí</span></td></tr><tr><td>La Chinga Niquia</td><td>14 nov</td><td class='num'>$751.740</td><td class='ctr'><span class="pill pos">Sí</span></td></tr><tr><td>Mercados Y Carnes O.R</td><td>11 nov</td><td class='num'>$551.760</td><td class='ctr'><span class="pill pos">Sí</span></td></tr><tr><td>Merca Alex</td><td>10 nov</td><td class='num'>$507.800</td><td class='ctr'><span class="pill pos">Sí</span></td></tr><tr><td>Mercados La Raza</td><td>10 nov</td><td class='num'>$459.800</td><td class='ctr'><span class="pill pos">Sí</span></td></tr><tr><td>La 80 Cabañas</td><td>14 nov</td><td class='num'>$453.600</td><td class='ctr'><span class="pill pos">Sí</span></td></tr><tr><td>Tropiexpress</td><td>12 nov</td><td class='num'>$84.000</td><td class='ctr'><span class="pill pos">Sí</span></td></tr>
+            <tr style="font-weight:800"><td>Total vigente</td><td></td><td class="num">$13.463.020</td><td></td></tr>
+        </table>
+    </div>
+
+    <!-- 05 -->
+    <div class="section-hero"><div class="num">05</div><h2 class="section-title">Ejecución <em>en punto de venta</em></h2></div>
+    <p class="section-sub">Inventario, precios, competencia y POP quedaron incorporados a la rutina de visita; los módulos de pedido sugerido, muestras y Evacuador se sumaron durante julio.</p>
+
+    <div class="chart-split">
+        <div class="chart-box"><div class="cb-head"><h3>Precios dentro de rango por semana</h3><div class="cb-tag">Fig. 05</div></div><p class="cb-sub">231 de 319 chequeos con referencia (72.4%).</p><div class="chart-container-sm"><canvas id="chPrc"></canvas></div></div>
+        <div class="chart-box"><div class="cb-head"><h3>Marcas de competencia observadas</h3><div class="cb-tag">Fig. 06</div></div><p class="cb-sub">394 referencias de competencia registradas.</p><div class="chart-container-sm"><canvas id="chComp"></canvas></div></div>
+    </div>
+
+    <div class="chart-box">
+        <div class="cb-head"><h3>% de visitas con chequeo de precios y con POP presente</h3><div class="cb-tag">Fig. 07</div></div>
+        <p class="cb-sub">Evolución semanal de dos módulos de ejecución.</p>
+        <div class="chart-container-sm" style="height:300px;"><canvas id="chMod"></canvas></div>
+    </div>
+
+    <div class="table-container">
+        <h3>Módulos de ejecución en el periodo</h3>
+        <p class="tbl-sub">Fecha de la primera visita en que se usó cada módulo y cobertura sobre las 362 visitas validadas.</p>
+        <table class="table-data">
+            <tr><th>Módulo</th><th>Primer uso</th><th class="num">Visitas</th><th class="num">Cobertura</th></tr>
+            <tr><td>Inventario por visita</td><td>1 jul</td><td class='num'>351 de 362</td><td class='num'>97.0%</td></tr><tr><td>Chequeo de precios</td><td>1 jul</td><td class='num'>306 de 362</td><td class='num'>84.5%</td></tr><tr><td>Chequeo de competencia</td><td>1 jul</td><td class='num'>303 de 362</td><td class='num'>83.7%</td></tr><tr><td>POP en el PDV</td><td>1 jul</td><td class='num'>178 de 362</td><td class='num'>49.2%</td></tr><tr><td>Pedido sugerido</td><td>1 jul</td><td class='num'>262 de 362</td><td class='num'>72.4%</td></tr><tr><td>Muestras</td><td>11 jul</td><td class='num'>55 de 362</td><td class='num'>15.2%</td></tr><tr><td>Evacuador (sábado)</td><td>25 jul</td><td class='num'>16 de 362</td><td class='num'>4.4%</td></tr>
+        </table>
+    </div>
+
+    <!-- 06 -->
+    <div class="section-hero"><div class="num">06</div><h2 class="section-title">Validación <em>y conciliación de resultados</em></h2></div>
+    <p class="section-sub">Antes de cerrar la plaza se recalcularon todos los resultados desde la base de registros, se ubicó cada visita por GPS contra la coordenada habitual de su PDV y se compararon las cifras con los informes semanales publicados.</p>
+
+    <div class="kpi-row">
+        <div class="kpi-card pos"><div class="k-ico"><i class="fa-solid fa-circle-check"></i></div><div class="k-lbl">En la coordenada del PDV</div><h3>339</h3><div class="k-note">93.6% de las visitas, a menos de 300 m.</div></div>
+        <div class="kpi-card"><div class="k-ico"><i class="fa-solid fa-arrows-rotate"></i></div><div class="k-lbl">Reasignadas por GPS</div><h3>8</h3><div class="k-note">Registradas con otro nombre de PDV; el GPS las ubicó en su punto real.</div></div>
+        <div class="kpi-card"><div class="k-ico"><i class="fa-solid fa-circle-question"></i></div><div class="k-lbl">Por confirmar</div><h3>4</h3><div class="k-note">Ubicación distinta a la del PDV; se cuentan como registradas.</div></div>
+        <div class="kpi-card"><div class="k-ico"><i class="fa-solid fa-filter"></i></div><div class="k-lbl">Registros depurados</div><h3>4</h3><div class="k-note">3 fuera de la plaza o fuera de jornada y 1 duplicado.</div></div>
+    </div>
+
+    <div class="table-container">
+        <h3>Conciliación con los informes semanales publicados</h3>
+        <p class="tbl-sub">Visitas y cumplimiento de ruta de cada informe frente al recálculo final. Las diferencias provienen de la ubicación por GPS, de actualizaciones del rutero y de registros ajustados después de cada corte. Los informes I a X corresponden a los primeros diez de la serie (I a IIIIIIIIII).</p>
+        <table class="table-data">
+            <tr><th>Informe</th><th>Semana</th><th class="num">Publicado</th><th class="num">Recalculado</th><th>Estado</th><th>Detalle</th></tr>
+            <tr><td>I</td><td>S27 (1–4 jul)</td><td class='num'>18 visitas · 10 PDVs</td><td class='num'>14 visitas · 9 PDVs</td><td><span class="pill warn">Ajustado</span></td><td style='font-size:.78rem;color:var(--p-gray)'>Informe preliminar de la primera semana; la base actual registra 14 visitas.</td></tr><tr><td>IIII</td><td>S27–S30 acumulado</td><td class='num'>75 visitas</td><td class='num'>76 visitas</td><td><span class="pill warn">Ajustado</span></td><td style='font-size:.78rem;color:var(--p-gray)'>Diferencia de 1 visita por actualización posterior de la base.</td></tr><tr><td>V</td><td>S31 (27 jul–1 ago)</td><td class='num'>21 visitas · 13 PDVs</td><td class='num'>21 visitas · 13 PDVs</td><td><span class="pill pos">Coincide</span></td><td style='font-size:.78rem;color:var(--p-gray)'>Sin diferencias; unidades y pipeline también coinciden.</td></tr><tr><td>VI</td><td>S32 (3 ago–8 ago)</td><td class='num'>17 visitas · 13 PDVs</td><td class='num'>17 visitas · 13 PDVs</td><td><span class="pill pos">Coincide</span></td><td style='font-size:.78rem;color:var(--p-gray)'>Sin diferencias; unidades y pipeline también coinciden.</td></tr><tr><td>VII</td><td>S33 (10 ago–15 ago)</td><td class='num'>24 visitas · 15 PDVs</td><td class='num'>24 visitas · 15 PDVs</td><td><span class="pill pos">Coincide</span></td><td style='font-size:.78rem;color:var(--p-gray)'>Sin diferencias; unidades y pipeline también coinciden.</td></tr><tr><td>VIII</td><td>S34 (18 ago–22 ago)</td><td class='num'>18 visitas · 14 PDVs</td><td class='num'>19 visitas · 14 PDVs</td><td><span class="pill warn">Ajustado</span></td><td style='font-size:.78rem;color:var(--p-gray)'>La base actual registra 1 visita más (21 ago).</td></tr><tr><td>IX</td><td>S35 (24 ago–26 ago)</td><td class='num'>7 visitas · 5 PDVs</td><td class='num'>7 visitas · 5 PDVs</td><td><span class="pill warn">Ajustado</span></td><td style='font-size:.78rem;color:var(--p-gray)'>Cumplimiento 7/25 en su informe; con el rutero actual el plan de esa semana es 7/7 (ver sección 02).</td></tr><tr><td>X</td><td>S38</td><td class='num'>16 visitas · 15/16 ruta</td><td class='num'>16 visitas · 15/16 ruta</td><td><span class="pill pos">Coincide</span></td><td style='font-size:.78rem;color:var(--p-gray)'>Sin diferencias.</td></tr><tr><td>XI</td><td>S39</td><td class='num'>23 visitas · 22/23 ruta</td><td class='num'>23 visitas · 21/23 ruta</td><td><span class="pill warn">Ajustado</span></td><td style='font-size:.78rem;color:var(--p-gray)'>La visita de La Chinca Bello del 21 sep se ubicó por GPS en La Chinga Niquía.</td></tr><tr><td>XII</td><td>S40</td><td class='num'>25 visitas · 25/25 ruta</td><td class='num'>25 visitas · 25/25 ruta</td><td><span class="pill pos">Coincide</span></td><td style='font-size:.78rem;color:var(--p-gray)'>Sin diferencias.</td></tr><tr><td>XIII</td><td>S41</td><td class='num'>23 visitas · 23/23 ruta</td><td class='num'>22 visitas · 21/22 ruta</td><td><span class="pill warn">Ajustado</span></td><td style='font-size:.78rem;color:var(--p-gray)'>Un registro de Dinastía Castilla (6 oct) tiene ubicación fuera de Medellín y otro (9 oct) se reasignó por GPS a Supermercado La 2000 Niquia.</td></tr><tr><td>XIV</td><td>S42</td><td class='num'>19 visitas · 19/20 ruta</td><td class='num'>19 visitas · 19/20 ruta</td><td><span class="pill pos">Coincide</span></td><td style='font-size:.78rem;color:var(--p-gray)'>Sin diferencias.</td></tr><tr><td>XV</td><td>S43</td><td class='num'>24 visitas · 23/25 ruta</td><td class='num'>24 visitas · 23/25 ruta</td><td><span class="pill pos">Coincide</span></td><td style='font-size:.78rem;color:var(--p-gray)'>Sin diferencias.</td></tr><tr><td>XVI</td><td>S44</td><td class='num'>24 visitas · 23/25 ruta</td><td class='num'>24 visitas · 24/25 ruta</td><td><span class="pill warn">Ajustado</span></td><td style='font-size:.78rem;color:var(--p-gray)'>El rutero actualizado programa Comercializadora La 2000 el viernes 30.</td></tr><tr><td>XVII</td><td>S45</td><td class='num'>20 visitas · 18/18 ruta</td><td class='num'>20 visitas · 18/18 ruta</td><td><span class="pill pos">Coincide</span></td><td style='font-size:.78rem;color:var(--p-gray)'>Sin diferencias.</td></tr><tr><td>XVIII</td><td>S46</td><td class='num'>20 visitas · 19/25 ruta</td><td class='num'>20 visitas · 19/25 ruta</td><td><span class="pill pos">Coincide</span></td><td style='font-size:.78rem;color:var(--p-gray)'>Sin diferencias.</td></tr>
+        </table>
+    </div>
+
+    <!-- 07 -->
+    <div class="section-hero"><div class="num">07</div><h2 class="section-title">Cierre <em>y traspaso</em></h2></div>
+    <p class="section-sub">Resumen de lo que deja la plaza Medellín al cierre, como insumo para la continuidad comercial de PQP.</p>
+
+    <div class="strategy-box"><div class="kick">Traspaso de la plaza</div><h3>Lo que queda listo para PQP</h3><p class="sub">Información consolidada y verificada al sábado 14 de noviembre de 2026.</p>
+        <div class="strat-grid">
+            <div class="strat-item"><h6><span class="st-ico"><i class="fa-solid fa-truck-ramp-box"></i></span>Pedido sugerido vigente</h6><p>$13.46 M repartidos en 14 PDVs activos, con el detalle por punto y fecha en la sección 04, para gestión comercial.</p></div>
+            <div class="strat-item"><h6><span class="st-ico"><i class="fa-solid fa-store"></i></span>Ruta regular consolidada</h6><p>15 PDVs de Medellín, Bello y Niquía con frecuencia semanal, 6 días de ruta y venta de sábado en La 80 Cabañas y Mercados Y Carnes O.R.</p></div>
+            <div class="strat-item"><h6><span class="st-ico"><i class="fa-solid fa-tag"></i></span>Precios por revisar</h6><p>88 chequeos quedaron fuera de rango (57 por debajo y 31 por encima de la referencia). Se concentran en Mercados Y Carnes O.R (24), Mercados La Raza (21) y Tropiexpress (13), y en detergente en polvo de 3000 g (44).</p></div>
+            <div class="strat-item"><h6><span class="st-ico"><i class="fa-solid fa-clipboard-check"></i></span>POP y activación</h6><p>Material POP presente en 14 de 14 PDVs activos, 707 muestras entregadas y Evacuador activado en 16 visitas de sábado.</p></div>
+        </div>
+    </div>
+
+</div>
+
+<footer class="foot">
+    <div class="foot-in">
+        <div class="foot-top">
+            <div><div class="foot-brand">PQP<span class="accent">·</span>Intelligence</div><div class="foot-brand-sub">Ruta Mercaderismo · Portafolio Ultrex</div></div>
+            <div class="foot-col"><h6>Cobertura</h6><p>Plaza Medellín: Medellín, Bello y Niquía.</p><p>18 puntos de venta gestionados.</p></div>
+            <div class="foot-col"><h6>Alcance del informe</h6><p>Registros de Natalia Rueda (1 jul–31 ago) y Aninay Pacheco (16 sep–14 nov) en la plaza Medellín. Corte sábado 14 de noviembre.</p></div>
+            <div class="foot-col"><h6>Emisión</h6><p>Informe de cierre · Plaza Medellín.</p><p>Periodo: 1 de julio al 14 de noviembre de 2026.</p><p>Documento · PQP.</p></div>
+        </div>
+        <div class="foot-bottom">
+            <span>PQP · Todos los derechos reservados</span>
+            <span>362 visitas · 18 PDVs · 19 semanas</span>
+            <span>Cierre de plaza · Medellín</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+Chart.register(ChartDataLabels);
+const NAVY='#0b2545', BLUE='#1d4e89', SKY='#2e86ab', PLUM='#6b4e88', AQUA='#52b6c9', SLATE='#64748b', POS='#0e7a5f', WARN='#a86a1a';
+const font = { family: 'Plus Jakarta Sans', weight: '600', size: 11 };
+const axisGrid = { grid: { color: '#eef2f6', drawTicks: false }, ticks: { color: SLATE, font, padding: 8 }, border: { display: false } };
+const axisPlain = { grid: { display: false, drawTicks: false }, ticks: { color: SLATE, font, padding: 8 }, border: { display: false } };
+const leg = { position:'top', labels:{ font, color:SLATE, usePointStyle:true } };
+const base = { maintainAspectRatio:false, responsive:true };
+const LAB = ["S27", "S28", "S29", "S30", "S31", "S32", "S33", "S34", "S35", "S36", "S38", "S39", "S40", "S41", "S42", "S43", "S44", "S45", "S46"];
+const dlw = (c)=>({ color:c, font:{ family:'Plus Jakarta Sans', weight:'800', size:10 } });
+
+new Chart(document.getElementById('chVis'), { type:'bar', data:{ labels:LAB, datasets:[
+  { label:'Natalia Rueda', data:[14, 24, 20, 18, 21, 17, 24, 19, 7, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0], backgroundColor:BLUE, borderRadius:3, datalabels:{ ...dlw('white'), display:(c)=>c.raw>0 } },
+  { label:'Aninay Pacheco', data:[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 23, 25, 22, 19, 24, 24, 20, 20], backgroundColor:PLUM, borderRadius:3, datalabels:{ ...dlw('white'), display:(c)=>c.raw>0 } } ] },
+  options:{ ...base, plugins:{ legend:leg }, scales:{ y:{ ...axisGrid, stacked:true, beginAtZero:true }, x:{ ...axisPlain, stacked:true } } } });
+
+new Chart(document.getElementById('chRuta'), { type:'line', data:{ labels:LAB, datasets:[
+  { label:'% cumplimiento', data:[92.9, 84.0, 90.0, 90.0, 100.0, 94.4, 96.0, 90.0, 100.0, 100.0, 93.8, 91.3, 100.0, 95.5, 95.0, 92.0, 96.0, 100.0, 76.0], borderColor:POS, backgroundColor:'rgba(14,122,95,.12)', fill:true, tension:.3, pointRadius:3, pointBackgroundColor:POS, spanGaps:true } ] },
+  options:{ ...base, plugins:{ legend:{ display:false }, datalabels:{ display:false } }, scales:{ y:{ ...axisGrid, min:0, max:100, ticks:{ ...axisGrid.ticks, callback:(v)=>v+'%' } }, x:axisPlain } } });
+
+new Chart(document.getElementById('chSab'), { type:'bar', data:{ labels:["4 jul", "11 jul", "18 jul", "25 jul", "1 ago", "8 ago", "15 ago", "22 ago", "19 sep", "26 sep", "3 oct", "10 oct", "17 oct", "24 oct", "31 oct", "7 nov", "14 nov"], datasets:[
+  { label:'Unidades', data:[53, 7, 16, 14, 7, 28, 9, 12, 22, 13, 10, 4, 9, 4, 11, 20, 8], backgroundColor:BLUE, borderRadius:3, yAxisID:'y', datalabels:{ ...dlw(NAVY), anchor:'end', align:'end' } },
+  { type:'line', label:'Valor ($ miles)', data:[1307, 171, 342, 315, 146, 513, 135, 262, 398, 250, 242, 75, 227, 60, 235, 322, 103], borderColor:AQUA, backgroundColor:AQUA, tension:.3, pointRadius:3, yAxisID:'y1', datalabels:{ display:false } } ] },
+  options:{ ...base, plugins:{ legend:leg }, scales:{ y:{ ...axisGrid, beginAtZero:true, grace:'12%' }, y1:{ ...axisGrid, position:'right', beginAtZero:true, grid:{ display:false } }, x:axisPlain } } });
+
+new Chart(document.getElementById('chSug'), { type:'bar', data:{ labels:LAB, datasets:[
+  { label:'Pipeline sugerido ($ millones)', data:[10.82, 23.79, 17.15, 14.37, 19.44, 12.93, 31.01, 10.35, 3.94, 1.85, 0.0, 16.06, 27.89, 14.7, 11.81, 19.8, 13.99, 16.9, 18.11], backgroundColor:SKY, borderRadius:3, datalabels:{ ...dlw(NAVY), anchor:'end', align:'end', formatter:(v)=>v?v.toFixed(1):'' } } ] },
+  options:{ ...base, plugins:{ legend:{ display:false } }, scales:{ y:{ ...axisGrid, beginAtZero:true, grace:'12%' }, x:axisPlain } } });
+
+new Chart(document.getElementById('chPrc'), { type:'line', data:{ labels:LAB, datasets:[
+  { label:'% dentro de rango', data:[71.4, 87.5, 88.9, 83.3, 61.1, 52.6, 72.0, 50.0, 84.6, 66.7, null, 100.0, 76.2, 76.5, 71.4, 83.3, 61.1, 73.3, 66.7], borderColor:BLUE, backgroundColor:'rgba(29,78,137,.10)', fill:true, tension:.3, pointRadius:3, pointBackgroundColor:BLUE, spanGaps:true } ] },
+  options:{ ...base, plugins:{ legend:{ display:false }, datalabels:{ display:false } }, scales:{ y:{ ...axisGrid, min:0, max:100, ticks:{ ...axisGrid.ticks, callback:(v)=>v+'%' } }, x:axisPlain } } });
+
+new Chart(document.getElementById('chComp'), { type:'bar', data:{ labels:["3D", "DERSA", "AK-1", "Otras"], datasets:[
+  { data:[65, 188, 40, 101], backgroundColor:[BLUE,SKY,AQUA,PLUM], borderRadius:3, barPercentage:0.7 } ] },
+  options:{ ...base, indexAxis:'y', plugins:{ legend:{ display:false }, datalabels:{ color:NAVY, font:{ family:'Plus Jakarta Sans', weight:'800', size:11 }, anchor:'end', align:'end' } }, layout:{ padding:{ right:30 } }, scales:{ x:{ ...axisGrid, beginAtZero:true }, y:axisPlain } } });
+
+new Chart(document.getElementById('chMod'), { type:'line', data:{ labels:LAB, datasets:[
+  { label:'Chequeo de precios', data:[85.7, 79.2, 65.0, 66.7, 76.2, 88.2, 87.5, 89.5, 100.0, 100.0, 0.0, 69.6, 100.0, 100.0, 100.0, 95.8, 100.0, 100.0, 100.0], borderColor:BLUE, tension:.3, pointRadius:3, pointBackgroundColor:BLUE },
+  { label:'POP presente', data:[28.6, 25.0, 0.0, 5.6, 19.0, 11.8, 0.0, 21.1, 0.0, 0.0, 0.0, 56.5, 96.0, 95.5, 89.5, 87.5, 91.7, 95.0, 100.0], borderColor:PLUM, tension:.3, pointRadius:3, pointBackgroundColor:PLUM } ] },
+  options:{ ...base, plugins:{ legend:leg, datalabels:{ display:false } }, scales:{ y:{ ...axisGrid, min:0, max:100, ticks:{ ...axisGrid.ticks, callback:(v)=>v+'%' } }, x:axisPlain } } });
+</script>
+
+</body>
+</html>
